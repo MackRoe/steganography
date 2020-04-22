@@ -16,15 +16,22 @@ def decode_image(file_location):
     # -----------------------------------
     # loop through all pixels in encoded_image
     for x in range(x_size):
+        print(x)
         for y in range(y_size):
-            r,g,b = red_channel.getpixel((xy))
+            print(y)
+            # xy = int(str(x) + str(y))
+            # print('xy', xy)
+            r,g,b = red_channel.getpixel((x, y))  # #ERROR!
+            print('RGB', r,g,b)
+            # check LSB
             if bin.r[len(r)-1] == 1:
                 r,g,b = 255, 255, 255
+            # check LSB
             elif bin.r[len(r)-1] == 0:
                 r,g,b = 0, 0, 0
-            decoded_image.putpixel(xy, r,g,b)
-    # change LSB
+            decoded_image.putpixel((x,y), r,g,b)
 
-    decoded_image.save("images/decoded_image.png")
+
+    decoded_image.save("decoded_image.png")
 
 decode_image("encoded_sample.png")
