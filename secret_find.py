@@ -5,6 +5,7 @@ from PIL import Image
 def decode_image(file_location):
     encoded_image = Image.open(file_location)
     red_channel = encoded_image.split()[0]
+    rgb_rc = red_channel.convert('RGB')
 
     x_size = encoded_image.size[0]
     y_size = encoded_image.size[1]
@@ -21,7 +22,7 @@ def decode_image(file_location):
             print(y)
             # xy = int(str(x) + str(y))
             # print('xy', xy)
-            r,g,b = red_channel.getpixel((x, y))  # #ERROR!
+            r,g,b = rgb_rc.getpixel((x, y))  # #ERROR!
             print('RGB', r,g,b)
             # check LSB
             if bin.r[len(r)-1] == 1:
@@ -34,4 +35,4 @@ def decode_image(file_location):
 
     decoded_image.save("decoded_image.png")
 
-decode_image("encoded_sample.png")
+print(decode_image("encoded_sample.png"))
