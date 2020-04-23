@@ -34,7 +34,7 @@ def decode_image(file_location):
             # check LSB
             elif binary_r[length_binary-1] == 0:
                 r,g,b = 0, 0, 0
-            decoded_image.putpixel((x,y), r,g,b)
+            decoded_image.putpixel((x,y), (r,g,b))
 
 
     decoded_image.save("decoded_image.png")
