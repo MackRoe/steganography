@@ -24,11 +24,15 @@ def decode_image(file_location):
             # print('xy', xy)
             r,g,b = rgb_rc.getpixel((x, y))  # #ERROR!
             print('RGB', r,g,b)
+            print('r', r)
             # check LSB
-            if bin.r[len(r)-1] == 1:
+            binary_r = bin(r)
+            length_binary = len(str(r))
+            print(length_binary)
+            if binary_r[length_binary-1] == 1:
                 r,g,b = 255, 255, 255
             # check LSB
-            elif bin.r[len(r)-1] == 0:
+            elif binary_r[length_binary-1] == 0:
                 r,g,b = 0, 0, 0
             decoded_image.putpixel((x,y), r,g,b)
 
