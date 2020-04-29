@@ -31,7 +31,7 @@ def decode_image(file_location):
             # print(length_binary)
 
             # check if lsb of red_channel is 1
-            if binary_r[-1] == 0:
+            if binary_r[-1] == '0':
                 # make pixel black if LSB is 0
                 pixels[x, y] = (255, 255, 255)
             else:
@@ -41,6 +41,6 @@ def decode_image(file_location):
             # decoded_image.putpixel((x,y), (r,g,b))
 
 
-    decoded_image.save("decoded_image3.png")
+    decoded_image.save("decoded_image4.png")
 
 print(decode_image("encoded_sample.png"))
